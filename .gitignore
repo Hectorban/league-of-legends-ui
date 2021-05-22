@@ -74,3 +74,8 @@ typings/
 
 # FuseBox cache
 .fusebox/
+
+# Nodecg dist directories
+/dashboard
+/extension
+/graphics

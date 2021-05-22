@@ -1,0 +1,99 @@
+{
+  "name": "League-of-legends-nodecg-ui",
+  "version": "2.0.0",
+  "description": "nodecg react parcel template",
+  "homepage": "https://github.com/Hectorban/Nodecg-parcel-template",
+  "author": "Alysanne <hectorban1234@gmail.com> (http://alysanne.dev/)",
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "src",
+    "extension"
+  ],
+  "scripts": {
+    "start": "start npm run watchDashboard && start npm run watchGraphics && start npm run watchExtension",
+    "watchDashboard": "parcel watch src/dashboard/*.html --out-dir dashboard --public-url ./",
+    "watchGraphics": "parcel watch src/graphics/*.html --out-dir graphics --public-url ./",
+    "watchExtension": "parcel watch src/extension/index.ts --out-dir extension --target node",
+    "buildDashboard": "parcel build src/dashboard/*.html --out-dir dashboard --public-url ./",
+    "buildGraphics": "parcel build src/graphics/*.html --out-dir graphics --public-url ./",
+    "buildExtension": "parcel build src/extension/index.ts --out-dir extension --target node",
+    "build": "start npm run buildDashboard && start npm run buildGraphics && start npm run buildExtension"
+  },
+  "keywords": [
+    "template",
+    "react",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.1.1",
+    "dashboardPanels": [
+      {
+        "name": "panel1",
+        "title": "Panel1",
+        "width": 2,
+        "file": "panel.html",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "panel2",
+        "title": "Panel2",
+        "width": 2,
+        "file": "panel2.html",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "panel3",
+        "title": "Panel3",
+        "width": 2,
+        "file": "panel3.html",
+        "headerColor": "#525F78"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "index2.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "index3.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.10",
+    "@types/ws": "^7.4.4",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "parcel-bundler": "^1.12.5",
+    "prettier": "2.2.1",
+    "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "base-64": "^1.0.0",
+    "flux": "^4.0.1",
+    "lcu-connector": "^2.1.3",
+    "node-fetch": "^2.6.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-query": "^3.13.8",
+    "ws": "^6.2.1"
+  }
+}
