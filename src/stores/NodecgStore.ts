@@ -1,6 +1,6 @@
 /// <reference path="../../../../types/lib/replicant.d.ts" />
 import { EventEmitter } from 'events'
-import dispatcher from '../dispatcher'
+import dispatcher from './dispatcher'
 
 /* 
     This store is used for piping replicant values directly into your component state.
@@ -10,15 +10,18 @@ import dispatcher from '../dispatcher'
 
 class NCGStore extends EventEmitter {
   replicants: {}
+
   constructor() {
     super()
     // Default values that will be overwritten on replicant declaration
     // They are not actually nessesary, they are just here for the sake of not handling 'undefined' at the component mount
     this.replicants = {}
   }
+
   getReplicants() {
     return this.replicants
   }
+
   handleActions(action) {
     if (action.type === "SET_REPLICANT") {
       this.replicants[action.name] = action.value

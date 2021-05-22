@@ -27,6 +27,8 @@ module.exports = {
     "array-callback-return": "off",
     "no-shadow": "off",
     "import/no-unresolved": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "global-require": "off",
+    "no-use-before-define": "off"
   },
 };

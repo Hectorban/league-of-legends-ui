@@ -1,9 +1,10 @@
-import {NodeCG} from '../../../../types/server';
 import WebSocket from "ws"
 import LCUConnector from 'lcu-connector'
+import * as nodecgApiContext from './utils/nodecg-api-context'
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
-const nodecg:NodeCG = require("./utils/nodecg-api-context").get()
+const nodecg = nodecgApiContext.get()
+
 const connector = new LCUConnector()
 const champSelectUpdateRep = nodecg.Replicant("champSelectUpdate")
 
@@ -16,17 +17,15 @@ connector.on('connect', async (data) => {
         ws.send('[5, "OnJsonApiEvent_lol-champ-select_v1_session"]')
 
         ws.onmessage = (message) =>{
-            const data = JSON.parse(<string>message.data)[2].data
+            const {data} = JSON.parse(<string>message.data)[2]
             champSelectUpdateRep.value = data
             if (!data) {nodecg.log.info("Esperando Champ Select")}
         }
     })
 })
 
-const sleep = (ms: number) => {
-    return new Promise((resolve) =>{
+const sleep = (ms: number) => new Promise((resolve) =>{
         setTimeout(resolve, ms)
     })
-}
 
 connector.start()

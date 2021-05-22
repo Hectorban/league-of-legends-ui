@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
-import {NodeCG} from '../../../../types/server'
+import * as nodecgApiContext from './utils/nodecg-api-context'
 
-const nodecg:NodeCG = require("./utils/nodecg-api-context").get()
+const nodecg = nodecgApiContext.get()
 const champObjRep = nodecg.Replicant("ddChampInfo")
 
 fetch('https://ddragon.leagueoflegends.com/api/versions.json')
