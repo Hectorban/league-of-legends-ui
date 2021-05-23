@@ -4,6 +4,7 @@ import * as nodecgApiContext from './utils/nodecg-api-context'
 const nodecg = nodecgApiContext.get()
 const champObjRep = nodecg.Replicant("ddChampInfo")
 const summObjRep = nodecg.Replicant("ddSummInfo")
+const runeObjRep = nodecg.Replicant("ddRuneInfo")
 
 fetch('https://ddragon.leagueoflegends.com/api/versions.json')
 .then(res => res.json())
@@ -22,7 +23,7 @@ fetch('https://ddragon.leagueoflegends.com/api/versions.json')
         })
         champObjRep.value = champIdsObject
     })
-    
+
     // Custom summoners because riot...
     const summoners = {
     '1': 'Cleanse',
@@ -41,5 +42,24 @@ fetch('https://ddragon.leagueoflegends.com/api/versions.json')
     '39': 'Mark'
     }
     summObjRep.value = summoners
+
+    fetch(`http://ddragon.leagueoflegends.com/cdn/${currentPatch}/data/en_US/runesReforged.json`)
+    .then(res => res.json())
+    .then((response) => {
+        const runeIdsObj = {}
+
+		response.map((runeTree) => {
+			runeIdsObj[runeTree.id] = String(`http://ddragon.leagueoflegends.com/cdn/img/${runeTree.icon}`) 
+			const {slots} = runeTree
+
+			slots.map((subRunes) => {
+				const runeData = subRunes.runes
+				runeData.map((rune) => {
+					runeIdsObj[rune.id] = String(`http://ddragon.leagueoflegends.com/cdn/img/${rune.icon}`)
+				})
+			})
+		})
+		runeObjRep.value = runeIdsObj
+    })
 })
     
