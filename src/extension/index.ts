@@ -7,10 +7,10 @@ module.exports = (nodecg:NodeCG) => {
 	nodecgApiContext.set(nodecg)
 	init().then(() => {
 		nodecg.log.info('Initialization successful.');
-	}).catch(error => {
+	})
+	.catch(error => {
 		nodecg.log.error('Failed to initialize:', error);
 	});
-	// Modules
 }
 
 async function init() {
@@ -18,6 +18,7 @@ async function init() {
 	nodecg.log.info("Initializing league of legends ui backend...")
 	
 	// Modules
-	require("./champselect")
 	require("./ddragonfetch")
+	require("./champselect")
+	require("./summonerNames")
 }
