@@ -3,6 +3,7 @@ import * as nodecgApiContext from './utils/nodecg-api-context'
 
 const nodecg = nodecgApiContext.get()
 const champObjRep = nodecg.Replicant("ddChampInfo")
+const summObjRep = nodecg.Replicant("ddSummInfo")
 
 fetch('https://ddragon.leagueoflegends.com/api/versions.json')
 .then(res => res.json())
@@ -21,6 +22,24 @@ fetch('https://ddragon.leagueoflegends.com/api/versions.json')
         })
         champObjRep.value = champIdsObject
     })
-    fetch(`http://ddragon.leagueoflegends.com/cdn/${currentPatch}/data/en_US/runesReforged.json`)
     
+    // Custom summoners because riot...
+    const summoners = {
+    '1': 'Cleanse',
+    '3': 'Exhaust',
+    '4': 'Flash',
+    '6': 'Haste',
+    '7': 'Heal',
+    '11': 'Smite',
+    '12': 'Teleport',
+    '13': 'Clarity',
+    '14': 'Dot',
+    '21': 'Barrier',
+    '30': 'PorRecall',
+    '31': 'PoroThrow',
+    '32': 'Mark',
+    '39': 'Mark'
+    }
+    summObjRep.value = summoners
 })
+    
