@@ -23,12 +23,17 @@ module.exports = {
     'react',
     '@typescript-eslint',
   ],
+  globals: {
+    'nodecg': true
+  },
   rules: {
     "array-callback-return": "off",
     "no-shadow": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "global-require": "off",
-    "no-use-before-define": "off"
+    "no-use-before-define": "off",
+    "react/jsx-filename-extension": "off",
+    "@typescript-eslint/triple-slash-reference": "off"
   },
 };

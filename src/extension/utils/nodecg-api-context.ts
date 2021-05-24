@@ -1,4 +1,4 @@
-import {NodeCG} from '../../types/nodecg';
+import {NodeCG} from '../../types/nodecgServer';
 
 let context: NodeCG;
 

@@ -2,11 +2,10 @@ import WebSocket from "ws"
 import LCUConnector from 'lcu-connector'
 import * as nodecgApiContext from './utils/nodecg-api-context'
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 const nodecg = nodecgApiContext.get()
-
 const connector = new LCUConnector()
 const champSelectUpdateRep = nodecg.Replicant("champSelectUpdate")
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 
 connector.on('connect', async (data) => {
     await sleep(10000) // We need to wait a little bit so the client can set up the server
