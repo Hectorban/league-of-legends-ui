@@ -1,4 +1,3 @@
-/// <reference path="../../../../types/lib/replicant.d.ts" />
 import { EventEmitter } from 'events'
 import dispatcher from './dispatcher'
 
@@ -9,8 +8,8 @@ import dispatcher from './dispatcher'
 */ 
 
 class NCGStore extends EventEmitter {
-  replicants: {}
-
+  replicants: any
+  
   constructor() {
     super()
     // Default values that will be overwritten on replicant declaration
@@ -34,7 +33,7 @@ class NCGStore extends EventEmitter {
 // Going slightly against the pattern, but dispatching events
 // in this store kind of makes sense since we only, in fact, have a single "setter" action that will bind our state to corresponding
 // replicant value
-const replicate = (name) => {
+const replicate = (name: string):void => {
   const replicant = nodecg.Replicant(name)
   NodeCG.waitForReplicants(replicant)
   .then(() => {

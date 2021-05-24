@@ -24,7 +24,8 @@ module.exports = {
     '@typescript-eslint',
   ],
   globals: {
-    'nodecg': true
+    'nodecg': true,
+    "NodeCG": true
   },
   rules: {
     "array-callback-return": "off",
