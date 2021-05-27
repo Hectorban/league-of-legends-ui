@@ -5,8 +5,9 @@ interface Props {
     spell1Name: string
     spell2Name: string
     team: number
+    summonerId: number
 }
-const PlayerPick = ({champName,}:Props) => {
+const PlayerPick = ({champName, spell1Name, spell2Name, team, summonerId}:Props) => {
     console.log("AAAA")
     return (
         <div>

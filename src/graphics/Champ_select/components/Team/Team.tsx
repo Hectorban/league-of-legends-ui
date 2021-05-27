@@ -1,4 +1,5 @@
 import React, { ReactElement, useState, useEffect } from 'react';
+import ReactLoading from 'react-loading'
 import PlayerPick from '../PlayerPick'
 
 const champInfoRep:any = nodecg.Replicant("ddChampInfo")
@@ -11,8 +12,8 @@ interface Props {
 }
 
 const Team = ({side, data, bans}:Props): ReactElement => {
-    const [champInfo, setChampInfo] = useState()
-    const [summInfo, setSummInfo] = useState()
+    const [champInfo, setChampInfo]:any = useState()
+    const [summInfo, setSummInfo]:any = useState()
 
     useEffect(() =>{
     const fetchddInfo = async ()=>{
@@ -25,18 +26,35 @@ const Team = ({side, data, bans}:Props): ReactElement => {
     };
     fetchddInfo();
     }, []);
+    if (!champInfo || !summInfo) {
+        return(
+            <div>
+                <ReactLoading 
+                    type="spinningBubbles" 
+                    color="black" 
+                    height={400} 
+                    width={400} 
+                />
+            </div>
+        )
+    }
 
-    console.log(champInfo)
-    console.log(summInfo)
     return (
         <div className={`team-selection -${side}`}>
             <div className="selection">
                 {data.map((playerSelection:any) =>{
-                    const { spell1d, spell2d, summonerId, team, cellId } = playerSelection
+                    const { spell1Id, spell2Id, summonerId, team, cellId, championId } = playerSelection
+                    const champName = champInfo[championId]
+                    const spell1Name = summInfo[spell1Id]
+                    const spell2Name = summInfo[spell2Id]
                     return (
                         <PlayerPick
-                        key={cellId}
-                        team = {team}
+                            key={cellId}
+                            team = {team}
+                            summonerId = {summonerId}
+                            champName = {champName}
+                            spell1Name = {spell1Name}
+                            spell2Name = {spell2Name}
                         />
                     )
                 })}
