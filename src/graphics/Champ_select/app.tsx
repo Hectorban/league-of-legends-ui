@@ -37,7 +37,9 @@ const app: React.FC = (): ReactElement => {
       </div>
     )
   }
-  const { myTeam, theirTeam, bans, actions} = champSelectUpdate 
+
+  const { myTeam, theirTeam, bans} = champSelectUpdate 
+  const { myTeamBans, theirTeamBans} = bans
   
   return (
     <div className="app">
@@ -46,9 +48,17 @@ const app: React.FC = (): ReactElement => {
       </div>
       <div className="app-container">
         <Team
+          key={1}
           side="Blue"
           data={myTeam}
-         />
+          bans={myTeamBans}
+        />
+        <Team
+          key={2}
+          side="Red"
+          data={theirTeam}
+          bans={theirTeamBans}
+        />
       </div>
     </div>
   );
