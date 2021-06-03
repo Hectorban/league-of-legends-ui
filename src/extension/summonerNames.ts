@@ -18,7 +18,6 @@ connector.on('connect', (data) => {
            .then(response => {
                const summonername = response.displayName || "bot" 
                ack(null, summonername)
-               console.log(summonername)
            })
            .catch(err =>{
                nodecg.log.error(err)
