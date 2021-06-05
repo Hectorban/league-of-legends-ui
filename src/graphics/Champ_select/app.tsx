@@ -6,6 +6,8 @@ import NCGStore, { replicate } from "../../stores/NodecgStore";
 import './app.scss'
 import Team from './components/Team';
 import Ban from './components/Ban'
+import Scoreboard from './components/Scoreboard';
+import Timer from './components/Timer';
 
 const app: React.FC = (): ReactElement => {
   const [repState, setRepState] = useState({
@@ -70,6 +72,12 @@ const app: React.FC = (): ReactElement => {
           key={4}
           side='Red'
           data={theirTeamBans}
+        />
+        <Scoreboard
+
+        />
+        <Timer
+
         />
       </div>
     </div>

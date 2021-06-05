@@ -12,7 +12,9 @@ const Ban: React.FC<Props> = ({data, side}:Props): ReactElement => {
 
     return (
         <div className={`ban-selection -${side}`}>
-            <p>aa</p>
+            <div className='ban-selection-container'>
+                <p>a</p>
+            </div>
         </div>
     );
 };
