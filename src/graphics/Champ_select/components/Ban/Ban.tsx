@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { Bans } from 'src/types/champSelect';
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
     side: string
 }
 
-const Ban: React.FC<Props> = ({data, side}:Props): ReactElement => {
+const Ban: FC<Props> = ({data, side}:Props): ReactElement => {
     console.log(data)
     console.log(side)
 

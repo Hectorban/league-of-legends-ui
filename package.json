@@ -30,25 +30,11 @@
     "compatibleRange": "^1.1.1",
     "dashboardPanels": [
       {
-        "name": "panel1",
-        "title": "Panel1",
-        "width": 2,
-        "file": "panel.html",
-        "headerColor": "#525F78"
-      },
-      {
-        "name": "panel2",
-        "title": "Panel2",
-        "width": 2,
-        "file": "panel2.html",
-        "headerColor": "#525F78"
-      },
-      {
-        "name": "panel3",
-        "title": "Panel3",
-        "width": 2,
-        "file": "panel3.html",
-        "headerColor": "#525F78"
+        "name": "Control_panel",
+        "title": "Control_panel",
+        "file": "Control_panel.html",
+        "headerColor": "#525F78",
+        "fullbleed": true
       }
     ],
     "graphics": [

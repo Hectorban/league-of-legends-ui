@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useEffect } from 'react';
+import React, { ReactElement, useState, useEffect, FC } from 'react';
 import ReactLoading from 'react-loading'
 import { ChampSelectType } from 'src/types/champSelect';
 import PlayerPick from '../PlayerPick'
@@ -11,7 +11,7 @@ interface Props {
     side: string
 }
 
-const Team = ({side, data}:Props): ReactElement => {
+const Team:FC<Props> = ({side, data}:Props): ReactElement => {
     const [champInfo, setChampInfo] = useState<any>()
     const [summInfo, setSummInfo] = useState<any>()
 
