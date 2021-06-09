@@ -34,11 +34,11 @@ const app: React.FC = (): ReactElement => {
     return (
       <div className='loading-container'>
         <ReactLoading
-        className='loading'
-        type="spinningBubbles" 
-        color="black" 
-        height={400} 
-        width={400} 
+          className='loading'
+          type="spinningBubbles" 
+          color="black" 
+          height={400} 
+          width={400} 
         />
       </div>
     )

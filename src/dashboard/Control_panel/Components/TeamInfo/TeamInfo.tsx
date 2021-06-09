@@ -1,13 +1,19 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState } from 'react'
 import { useFormik } from 'formik'
 import { setTimeout } from 'timers'
 
-const TeamInfoRep = nodecg.Replicant("TeamInfo")
+interface Props {
+    Team1Name: string
+    Team2Name: string
+    Team1Score: number
+    Team2Score: number
+}
 
-const Teaminfo:FC = () => {
+const TeamInfoRep:any = nodecg.Replicant("TeamInfoRep")
+
+const Teaminfo:FC<Props> = ({Team1Name, Team2Name, Team1Score, Team2Score}:Props) => {
     const [updateAlert, setupdateAlert] = useState(false)
-    const [oldTeamInfo, setoldTeamInfo] = useState({})
 
     const showAlert = () => {
         setupdateAlert(true)
@@ -15,27 +21,19 @@ const Teaminfo:FC = () => {
             setupdateAlert(false)
         }, 1500)
         return () => clearTimeout(timer)
-    }
+    }    
 
-    useEffect(() => {
-        const fetchTeaminfo = async () => {
-            NodeCG.waitForReplicants(TeamInfoRep).then(() => {
-                setoldTeamInfo(TeamInfoRep.value)          
-            })
-        }
-    })
-    console.log(oldTeamInfo)
     const formik = useFormik({
         initialValues: {
-            Team1Name: 'Team1',
-            Team2Name: 'Team2',
-            Team1Score: 0,
-            Team2Score: 0
+            Team1Name,
+            Team2Name,
+            Team1Score,
+            Team2Score
         },
         onSubmit: values => {
             TeamInfoRep.value = JSON.stringify(values, null)
         }
-    })
+    }) 
     
     return (
         <div className='teaminfo'>
@@ -99,4 +97,3 @@ const Teaminfo:FC = () => {
 }
 
 export default Teaminfo
-
