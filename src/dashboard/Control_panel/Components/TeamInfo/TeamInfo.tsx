@@ -1,10 +1,30 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { FC } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import { useFormik } from 'formik'
+import { setTimeout } from 'timers'
 
 const TeamInfoRep = nodecg.Replicant("TeamInfo")
 
 const Teaminfo:FC = () => {
+    const [updateAlert, setupdateAlert] = useState(false)
+    const [oldTeamInfo, setoldTeamInfo] = useState({})
+
+    const showAlert = () => {
+        setupdateAlert(true)
+        const timer = setTimeout(() => {
+            setupdateAlert(false)
+        }, 1500)
+        return () => clearTimeout(timer)
+    }
+
+    useEffect(() => {
+        const fetchTeaminfo = async () => {
+            NodeCG.waitForReplicants(TeamInfoRep).then(() => {
+                setoldTeamInfo(TeamInfoRep.value)          
+            })
+        }
+    })
+    console.log(oldTeamInfo)
     const formik = useFormik({
         initialValues: {
             Team1Name: 'Team1',
@@ -16,11 +36,11 @@ const Teaminfo:FC = () => {
             TeamInfoRep.value = JSON.stringify(values, null)
         }
     })
-
+    
     return (
         <div className='teaminfo'>
             <form onSubmit={formik.handleSubmit} className='teaminfo-form'>
-                
+
                 <div className='teaminfo-form-team1name'>
                     <label htmlFor='Team1Name'>Equipo 1</label>
                     <input 
@@ -61,8 +81,18 @@ const Teaminfo:FC = () => {
                 onChange={formik.handleChange}
                 value={formik.values.Team2Score}
                 />
+                
+                {updateAlert ? (
+                    <span className='teaminfo-form-alert'>Actualizado!</span>
+                ) : null}
 
-                <button className='teaminfo-form-submitbutton' type='submit'>Actualizar</button>
+                <button 
+                    className='teaminfo-form-submitbutton' 
+                    type='submit' 
+                    onClick={() => showAlert()}>
+                    Actualizar
+                </button>
+
             </form>
         </div>
     )
