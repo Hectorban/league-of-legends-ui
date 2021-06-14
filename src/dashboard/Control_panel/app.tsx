@@ -25,15 +25,7 @@ const app:FC = () => {
     replicants: { TeamInfoRep }, // Used to take out a replicant from the replicants object
   } = repState || {}
   
-  if (!TeamInfoRep) {
-    return (
-      <div>
-        Loading
-      </div>
-    )
-  }
-
-  const TeamInfoRepData = TeamInfoRep || null 
+  const TeamInfoRepData = TeamInfoRep || {"Team1Name": "Team1","Team2Name": "Team2", "Team1Score": 0, "Team2Score": 0} 
   const { Team1Name, Team2Name, Team1Score, Team2Score } = TeamInfoRepData 
   
   return (

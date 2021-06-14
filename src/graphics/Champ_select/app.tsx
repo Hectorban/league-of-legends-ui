@@ -45,8 +45,8 @@ const app: FC = () => {
           className='loading'
           type="spinningBubbles" 
           color="black" 
-          height={400} 
-          width={400} 
+          height={200} 
+          width={200} 
         />
       </div>
     )

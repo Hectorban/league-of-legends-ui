@@ -16,6 +16,13 @@ body {
     grid-template-columns: 1920px;
 }
 
+.loading-container {
+    @include fullscreen;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .app-container, .app-background {
     grid-column: 1;
 }

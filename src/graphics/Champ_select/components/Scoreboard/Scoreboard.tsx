@@ -9,10 +9,13 @@ interface Props {
 
 const Scoreboard:FC<Props> = ({ Team1Name,Team1Score,Team2Name,Team2Score }:Props) => {
     
-    console.log("a")
+    console.log("Scoreboard")
     return (
         <div className='scoreboard'>
-            <p>A</p>
+            <p className='Team1Name'>{Team1Name}</p>
+            <p className='Team2Name'>{Team2Name}</p>
+            <p className='Team1Score'>{Team1Score}</p>
+            <p className='Team2Score'>{Team2Score}</p>
         </div>
     )
 }
