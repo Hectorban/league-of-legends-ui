@@ -24,6 +24,7 @@ const app:FC = () => {
   const {
     replicants: { TeamInfoRep }, // Used to take out a replicant from the replicants object
   } = repState || {}
+  
   if (!TeamInfoRep) {
     return (
       <div>
@@ -32,16 +33,17 @@ const app:FC = () => {
     )
   }
 
-  const TeamInfoRepData = TeamInfoRep ? JSON.parse(TeamInfoRep) : null
-
+  const TeamInfoRepData = TeamInfoRep || null 
+  const { Team1Name, Team2Name, Team1Score, Team2Score } = TeamInfoRepData 
+  
   return (
     <div id='app'>
       <div className='app-container'>
         <TeamInfo
-          Team1Name = {TeamInfoRepData.Team1Name}
-          Team2Name = {TeamInfoRepData.Team2Name}
-          Team1Score = {TeamInfoRepData.Team1Score}
-          Team2Score = {TeamInfoRepData.Team2Score}
+          Team1Name = {Team1Name}
+          Team2Name = {Team2Name}
+          Team1Score = {Team1Score}
+          Team2Score = {Team2Score}
         />
       </div>
     </div>

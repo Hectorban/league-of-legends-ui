@@ -31,7 +31,7 @@ const Teaminfo:FC<Props> = ({Team1Name, Team2Name, Team1Score, Team2Score}:Props
             Team2Score
         },
         onSubmit: values => {
-            TeamInfoRep.value = JSON.stringify(values, null)
+            TeamInfoRep.value = values
         }
     }) 
     
@@ -67,7 +67,7 @@ const Teaminfo:FC<Props> = ({Team1Name, Team2Name, Team1Score, Team2Score}:Props
                 <input 
                 id='Team1Score'
                 name='Team1Score'
-                type='text'
+                type='number'
                 onChange={formik.handleChange}
                 value={formik.values.Team1Score}
                 />
@@ -75,7 +75,7 @@ const Teaminfo:FC<Props> = ({Team1Name, Team2Name, Team1Score, Team2Score}:Props
                 <input 
                 id='Team2Score'
                 name='Team2Score'
-                type='text'
+                type='number'
                 onChange={formik.handleChange}
                 value={formik.values.Team2Score}
                 />

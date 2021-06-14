@@ -8,7 +8,6 @@ interface Props {
 
 const Ban: FC<Props> = ({data, side}:Props): ReactElement => {
     console.log(data)
-    console.log(side)
 
     return (
         <div className={`ban-selection -${side}`}>
