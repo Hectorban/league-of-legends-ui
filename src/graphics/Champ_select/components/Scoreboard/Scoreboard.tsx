@@ -12,10 +12,11 @@ const Scoreboard:FC<Props> = ({ Team1Name,Team1Score,Team2Name,Team2Score }:Prop
     console.log("Scoreboard")
     return (
         <div className='scoreboard'>
-            <p className='Team1Name'>{Team1Name}</p>
-            <p className='Team2Name'>{Team2Name}</p>
-            <p className='Team1Score'>{Team1Score}</p>
-            <p className='Team2Score'>{Team2Score}</p>
+            <p className='team1Name'>{Team1Name}</p>
+            <p className='team2Name'>{Team2Name}</p>
+            <p className='team1Score'>{Team1Score}</p>
+            <p className='team2Score'>{Team2Score}</p>
+            <p className='versus'>VS</p>
         </div>
     )
 }

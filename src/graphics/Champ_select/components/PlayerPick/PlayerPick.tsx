@@ -21,15 +21,23 @@ const PlayerPick:FC<Props> = ({champName, spell1Name, spell2Name, team, summoner
         fetchSummonerName()
     }, [])
     console.log(team)
-    
+    const summTrigger = false
     return (
         <div className='player-pick'>
             {summonerName ? (
                 <div className='player-pick-container'>
                     <div className='player-pick-name'>{summonerName}</div>
-                    <img className='player-pick-champImage' src={champImage} alt={champName}/>
-                    <img className='player-pick-summoner1' src={spell1Image} alt='Bot Summoner'/>
-                    <img className='player-pick-summoner2' src={spell2Image} alt='Bot Summoner'/>
+                    {champName ? 
+                    <img className='player-pick-champImage' src={champImage} alt={champName}/> 
+                    : null}
+
+                    {summTrigger ? 
+                    <div className='player-pick-summonercontainer'>
+                        <img className='player-pick-summoner1' src={spell1Image} alt='Summoner'/>
+                        <img className='player-pick-summoner2' src={spell2Image} alt='Summoner'/>
+                    </div>
+                    : null}
+                    
                 </div> ) 
                 : null
             }            

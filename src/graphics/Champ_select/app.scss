@@ -41,9 +41,42 @@ body {
     grid-template-columns: 790px 340px 790px;
 
     .team-selection.-Blue, .team-selection.-Red {
+        height: 100%;
         grid-row: 3;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
+        align-items: center;
+        justify-content: center;
+        .player-pick {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            .player-pick-container {
+                height: 100%;
+                display: grid;
+                grid-template-rows: 85% 15%;
+                grid-column: 100%;
+                .player-pick-champImage {
+                    width: 100%;
+                    grid-column: 1;
+                    grid-row: 1/3;
+                    z-index: 1;
+                    animation: mover 2s;
+                }
+                .player-pick-name {
+                    grid-column: 1;
+                    grid-row: 2;
+                    position: relative;
+                    left: 4%;
+                    z-index: 2;
+
+                    font-size: large;
+                    text-align: start;
+                    color: white;
+                    font-size: 35px;
+                }
+            }
+        }
     }
     .team-selection.-Blue {
         grid-column: 1;
@@ -53,34 +86,77 @@ body {
     }
 
     .ban-selection.-Blue, .ban-selection.-Red {
-        display: grid;
-        grid-row: 1;
-        display: grid;
-        .ban-selection-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-        }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: nowrap;
+        .ban-pick {
+            width: 90px;
+            height: 90px;
+            overflow: hidden;
+            .ban-pick-image {
+                width: 100%;
+                height: 100%;
+           }
+       }
     }
     .ban-selection.-Blue {
-        grid-column: 1;
-        grid-template-columns: 60% 40%;
-        
+        flex-direction: row;
+        justify-content: flex-start;
     }
     .ban-selection.-Red {
-        grid-column: 3;
-        grid-template-columns: 40% 60%;
-        .ban-selection-container {
-            grid-column: 2;
-        }
+        flex-direction: row-reverse;
+        justify-content: flex-end;
     }
 
     .scoreboard {
         grid-column: 2;
         grid-row: 3;
+        display: grid;
+        grid-template-rows: 40% 25% 35%;
+        grid-template-columns: 40% 20% 40%;
+        color: white;
+        font-size: 40px;
+        align-items: center;
+        font-weight: bolder;
+        .team1Name {
+            grid-column: 1;
+            grid-row: 2;
+            justify-self: flex-end;
+        }
+        .team2Name {
+            grid-column: 3;
+            grid-row: 2;
+        }
+        .team1Score {
+            grid-column: 1;
+            grid-row: 3;
+            justify-self: flex-end;
+        }
+        .team2Score {
+            grid-column: 3;
+            grid-row: 3;
+            justify-self: flex-start;
+        }
+        .versus {
+            grid-column: 2;
+            grid-row: 2;
+            justify-self: center;
+            font-size: 20px;
+        }
     }
     
     .timer {
         grid-column: 1/4;
         grid-row: 2;
+    }
+}
+
+@keyframes mover {
+    0% { 
+        transform: translateY(200%); 
+    }
+    100% { 
+        transform: translateY(0%); 
     }
 }

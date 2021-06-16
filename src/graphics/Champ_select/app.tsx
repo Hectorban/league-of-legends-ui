@@ -1,13 +1,14 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react'
 import ReactLoading from 'react-loading'
-import { ChampSelectType } from 'src/types/champSelect';
-import NCGStore, { replicate } from "../../stores/NodecgStore";
+import { ChampSelectType } from 'src/types/champSelect'
+import NCGStore, { replicate } from "../../stores/NodecgStore"
 
+// import * as example from './util/CSExample.json'
 import './app.scss'
-import Team from './components/Team';
+import Team from './components/Team'
 import Ban from './components/Ban'
-import Scoreboard from './components/Scoreboard';
-import Timer from './components/Timer';
+import Scoreboard from './components/Scoreboard'
+import Timer from './components/Timer'
 
 interface TeamInfoRepTypes {
   Team1Name: string
@@ -61,9 +62,9 @@ const app: FC = () => {
 
   return (
     <div id="app">
-      <div className="app-background">
-        <img className="background" src="https://i.imgur.com/fs4iwBB.png" alt="El fondo deberia estar aqui >:c"/>
-      </div>
+{/*       <div className="app-background">
+        <img className="background" src="https://i.imgur.com/YWy7MZ5.jpg" alt="El fondo deberia estar aqui >:c"/>
+      </div> */}
       <div className="app-container">
         <Team
           key={1}

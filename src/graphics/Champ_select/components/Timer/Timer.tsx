@@ -4,7 +4,7 @@ const Timer = () => {
     console.log("Timer")
     return (
         <div className='timer'>
-            <p>Timer</p>
+            <p>.</p>
         </div>
     )
 }
