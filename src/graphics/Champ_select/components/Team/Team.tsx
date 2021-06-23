@@ -1,6 +1,6 @@
 import React, { ReactElement, useState, useEffect, FC } from 'react';
 import ReactLoading from 'react-loading'
-import { ChampSelectType } from 'src/types/champSelect';
+import { ChampSelectType } from '~types/champSelect';
 import PlayerPick from '../PlayerPick'
 
 const champInfoRep = nodecg.Replicant("ddChampInfo")

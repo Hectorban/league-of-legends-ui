@@ -27,8 +27,11 @@
     "removeComments": true,
     "sourceMap": true,
 		"types": [],
-		"baseUrl": "./",
-		"typeRoots": ["./"]
+		"baseUrl": "./src",
+		"typeRoots": ["./"],
+    "paths": {
+      "~*": ["./*"]
+    },
   },
   "include": ["./src/**/*.tsx", "./src/**/*.ts", "src/stores/NodecgStore.ts"],
   "exclude": ["node_modules"],

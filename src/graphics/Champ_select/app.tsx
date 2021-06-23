@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useState} from 'react'
 import ReactLoading from 'react-loading'
-import { ChampSelectType } from 'src/types/champSelect'
+import { ChampSelectType } from '~types/champSelect'
 import NCGStore, { replicate } from "../../stores/NodecgStore"
 
 // import * as example from './util/CSExample.json'
@@ -58,8 +58,7 @@ const app: FC = () => {
   const champSelect:ChampSelectType = champSelectUpdate
   const { myTeam, theirTeam, bans, actions } = champSelect
   const { myTeamBans, theirTeamBans} = bans
-  console.log(actions)
-
+  console.log(actions.length > 0 ? actions[actions.length - 1][0] : null)
   return (
     <div id="app">
 {/*       <div className="app-background">
@@ -93,7 +92,7 @@ const app: FC = () => {
           Team2Score = {Team2Score}
         />
         <Timer
-
+          actions= {actions}
         />
       </div>
     </div>

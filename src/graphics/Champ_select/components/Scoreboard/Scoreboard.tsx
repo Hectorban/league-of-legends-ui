@@ -7,10 +7,7 @@ interface Props {
     Team2Score: number
 }
 
-const Scoreboard:FC<Props> = ({ Team1Name,Team1Score,Team2Name,Team2Score }:Props) => {
-    
-    console.log("Scoreboard")
-    return (
+const Scoreboard:FC<Props> = ({ Team1Name,Team1Score,Team2Name,Team2Score }:Props) => (
         <div className='scoreboard'>
             <p className='team1Name'>{Team1Name}</p>
             <p className='team2Name'>{Team2Name}</p>
@@ -19,6 +16,5 @@ const Scoreboard:FC<Props> = ({ Team1Name,Team1Score,Team2Name,Team2Score }:Prop
             <p className='versus'>VS</p>
         </div>
     )
-}
 
 export default Scoreboard

@@ -88,7 +88,7 @@ const Teaminfo:FC<Props> = ({Team1Name, Team2Name, Team1Score, Team2Score}:Props
                     className='teaminfo-form-submitbutton' 
                     type='submit' 
                     onClick={() => showAlert()}>
-                    Actualizar
+                Actualizar
                 </button>
 
             </form>
