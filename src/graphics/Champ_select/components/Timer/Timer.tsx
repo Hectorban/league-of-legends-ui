@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import useCountDown from 'react-countdown-hook'
 import { Action } from '~types/champSelect'
 
@@ -13,7 +13,10 @@ const interval = 1 * 1000 // Also secs
 const Timer:FC<Props> = ({actions}: Props) => {
     const [timeLeft, {start, reset}] = useCountDown(pickTime, interval)
     const [length, setlength] = useState(actions.length)
-    if(length == 0) {
+    useEffect(() => {
+        start();
+    }, []);
+    if(length === 0) {
         reset()
     }
     if(length < actions.length) {
