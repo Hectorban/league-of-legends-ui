@@ -16,9 +16,16 @@ interface TeamInfoRepTypes {
   Team1Score: number
   Team2Score: number
 }
+interface Data {
+  TeamInfoRep: TeamInfoRepTypes 
+  champSelectUpdate: ChampSelectType
+}
+interface Replicants {
+  replicants: Data
+}
 
 const app: FC = () => {
-  const [repState, setRepState] = useState({
+  const [repState, setRepState] = useState<Replicants>({
     replicants: NCGStore.getReplicants(),
   });
 
@@ -37,9 +44,9 @@ const app: FC = () => {
   
   const {
     replicants: { champSelectUpdate, TeamInfoRep }, // Used to take out a replicant from the replicants object
-  } = repState || {}
+  } = repState
   
-  if(!champSelectUpdate || !TeamInfoRep) {
+  if(!champSelectUpdate || !TeamInfoRep || champSelectUpdate.actions.length <= 0) {
     return (
       <div className='loading-container'>
         <ReactLoading
@@ -52,13 +59,12 @@ const app: FC = () => {
       </div>
     )
   }
-  const TeamInfoData:TeamInfoRepTypes = TeamInfoRep
-  const { Team1Name, Team2Name, Team1Score, Team2Score } = TeamInfoData
 
-  const champSelect:ChampSelectType = champSelectUpdate
-  const { myTeam, theirTeam, bans, actions } = champSelect
-  const { myTeamBans, theirTeamBans} = bans
-  console.log(actions.length > 0 ? actions[actions.length - 1][0] : null)
+  const { Team1Name, Team2Name, Team1Score, Team2Score } = TeamInfoRep
+  const { myTeam, theirTeam, bans, actions } = champSelectUpdate
+  const { myTeamBans, theirTeamBans} = bans 
+  const currentpick = actions[actions.length - 1][0]
+
   return (
     <div id="app">
 {/*       <div className="app-background">
@@ -69,11 +75,13 @@ const app: FC = () => {
           key={1}
           side="Blue"
           data={myTeam}
+          currentpick = {currentpick}
         />
         <Team
           key={2}
           side="Red"
           data={theirTeam}
+          currentpick = {currentpick}
         />
         <Ban
           key={3}
