@@ -1,6 +1,6 @@
 import React, { ReactElement, useState, useEffect, FC } from 'react';
 import ReactLoading from 'react-loading'
-import { ChampSelectType } from '~types/champSelect';
+import { ChampSelectType, Action } from '~types/champSelect';
 import PlayerPick from '../PlayerPick'
 
 const champInfoRep = nodecg.Replicant("ddChampInfo")
@@ -9,9 +9,10 @@ const summInfoRep = nodecg.Replicant("ddSummInfo")
 interface Props {
     data: ChampSelectType["myTeam"]   
     side: string
+    currentpick: Action
 }
 
-const Team:FC<Props> = ({side, data}:Props): ReactElement => {
+const Team:FC<Props> = ({side, data, currentpick}:Props): ReactElement => {
     const [champInfo, setChampInfo] = useState<any>()
     const [summInfo, setSummInfo] = useState<any>()
 
@@ -26,7 +27,7 @@ const Team:FC<Props> = ({side, data}:Props): ReactElement => {
     };
     fetchddInfo();
     }, []);
-    if (!champInfo || !summInfo) {
+    if (!champInfo || !summInfo || !currentpick) {
         return(
             <div>
                 <ReactLoading 
@@ -49,11 +50,13 @@ const Team:FC<Props> = ({side, data}:Props): ReactElement => {
                     return (
                         <PlayerPick
                             key={cellId}
+                            cellId = {cellId}
                             team = {team}
                             summonerId = {summonerId}
                             champName = {champName}
                             spell1Name = {spell1Name}
                             spell2Name = {spell2Name}
+                            currentpick= {currentpick}
                         />
                     )
                 })}
