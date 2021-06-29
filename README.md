@@ -25,3 +25,8 @@ cd League-of-legends-nodecg-ui
 ```bash
 npm i
 ```
+
+4. Build source with [Parcel's](https://github.com/parcel-bundler/parcel) bundler 
+```bash
+npm run build
+```
