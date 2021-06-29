@@ -21,12 +21,15 @@ cd bundles
 git clone https://github.com/Hectorban/league-of-legends-ui.git
 cd League-of-legends-nodecg-ui
 ```
-3. Install dependencies with `npm`
+3. Install dependencies and build the bundle with `npm`
 ```bash
 npm i
+npm run build
 ```
 
-4. Build source with [Parcel's](https://github.com/parcel-bundler/parcel) bundler 
+4. Start nodecg
 ```bash
-npm run build
+cd..
+cd..
+npm start
 ```
