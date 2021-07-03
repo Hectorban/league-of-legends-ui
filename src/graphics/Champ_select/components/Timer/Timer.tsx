@@ -7,10 +7,10 @@ interface Props {
 }
 
 const pickTime = 27 * 1000 // Secs
-const interval = 1 * 1000 // Also secs
+const interval = 1 * 10 // Also secs
 
 
-const Timer:FC<Props> = ({actions}: Props) => {
+const Timer:FC<Props> = ({actions, currentPick}: Props) => {
     const [timeLeft, {start, reset}] = useCountDown(pickTime, interval)
     const [length, setlength] = useState(actions.length)
     useEffect(() => {
@@ -24,6 +24,7 @@ const Timer:FC<Props> = ({actions}: Props) => {
         start(pickTime)
     }
 
+    console.log(timeLeft/10)
     return (
         <div className='timer'>
             <div className='timer-bar' style={{width:`${(timeLeft/1000)*71}px`}}/>

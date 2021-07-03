@@ -101,6 +101,7 @@ const app: FC = () => {
         />
         <Timer
           actions= {actions}
+          currentPick={currentpick}
         />
       </div>
     </div>

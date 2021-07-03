@@ -51,6 +51,9 @@ body {
             height: 15px;
             background-color: blue;
             justify-self: center;
+            width: calc(var(--smooth)*1px);
+            animation-fill-mode: forwards;
+            animation: timerSmooth 1s;
         }
     }
 
@@ -170,6 +173,15 @@ body {
     .timer {
         grid-column: 1/4;
         grid-row: 2;
+    }
+}
+
+@keyframes timerSmooth {
+    0% {
+        width: calc(var(--smooth)*1px);
+    }
+    100% {
+        width: calc(var(--smooth) - 71px);
     }
 }
 
