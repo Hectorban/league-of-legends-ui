@@ -11,6 +11,7 @@ interface Props {
 const champInfoRep = nodecg.Replicant("ddChampInfo")
 
 const Ban: FC<Props> = ({data, side}:Props): ReactElement => {
+    console.log("commit")
     const [champInfo, setChampInfo] = useState<any>()
 
     useEffect(() =>{
